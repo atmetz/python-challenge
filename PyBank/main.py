@@ -81,3 +81,17 @@ print("Total: $" + str(total))
 print("Average Change: $" + str(average))
 print("Greatest Increase in Profits: " + greatincmon + " ($" + str(greatinc) + ")")
 print("Greatest Decrease in Profits: " + greatdecmon + " ($" + str(greatdec) + ")")
+
+# Set path for budget_data.csv
+analysis_txt = os.path.join('Analysis', 'analysis.txt')
+
+# Write to text file
+with open(analysis_txt, 'w') as txtfile:
+    # Print Financial Analysis
+    txtfile.write("Financial Analysis\n")
+    txtfile.write("----------------------------\n")
+    txtfile.write("Total Months: " + str(months) + "\n")
+    txtfile.write("Total: $" + str(total) + "\n")
+    txtfile.write("Average Change: $" + str(average) + "\n")
+    txtfile.write("Greatest Increase in Profits: " + greatincmon + " ($" + str(greatinc) + ")\n")
+    txtfile.write("Greatest Decrease in Profits: " + greatdecmon + " ($" + str(greatdec) + ")\n")
