@@ -4,7 +4,7 @@
 import os
 import csv
 
-# Set path for bduget_data.csv
+# Set path for budget_data.csv
 budget_csv = os.path.join('Resources', 'budget_data.csv')
 
 # Declare variables and initialize
@@ -42,34 +42,36 @@ with open(budget_csv, 'r') as csvfile:
         total += curpl
 
         # Calculate monthly change
-        change = prevpl - curpl
+        change = curpl - prevpl
 
-        totchange += change
+        # Calculate total change, ignoring first month
+        if months > 1:
+            totchange += change
 
         # Check for postive change
         if change >= 0:
 
             # Check if current months profit/loss is greater than the current greatest profit/loss
-            if curpl > greatinc:
+            if change > greatinc:
 
                 # Set the current profit/loss as the greatest and the current month as the greatest month
-                greatinc = curpl
+                greatinc = change
                 greatincmon = curmon
 
         else:
 
             # Check if current months profit/loss is greater than the current greatest profit/loss
-            if curpl < greatdec:
+            if change < greatdec:
 
                 # Set the current profit/loss as the greatest and the current month as the greatest month
-                greatdec = curpl
+                greatdec = change
                 greatdecmon = curmon
 
         # Set previous months profit/loss for comparison
         prevpl = curpl
 
 # Calculate average monthly change
-average = round((totchange / months), 2)
+average = round((totchange / (months - 1)), 2)
 
 # Print Financial Analysis
 print("Financial Analysis")
