@@ -47,7 +47,7 @@ with open(polls_csv, 'r') as csvfile:
         if caninlist != True:
             candidates.append(curcand)
             candidates_percent.append(0)
-            candidates_votes.append(0)
+            candidates_votes.append(1)
 
 # Calculate percentage of votes for each candidate, and the winner based on number of votes
 for x in range(len(candidates)):
